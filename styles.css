@@ -1,0 +1,65 @@
+.corpo {
+  background-image: linear-gradient(
+    to bottom,
+    #000000 0%,
+    #413f29 37.9%,
+    #ecec99 38%,
+    #fafa98 38.1%
+  );
+  min-height: calc(100vh - 72px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.padrao {
+  background-color: #ffffff;
+  min-height: calc(100vh - 72px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header, .footer {
+  flex-shrink: 0;
+}
+
+
+footer {
+  background-color: #202020;
+  color: #ffffff;
+  border-top: 0.5px solid #cacaca;
+}
+
+.botao-entrar {
+  display: block; /* Torna o botão um bloco para ocupar toda a largura do contêiner */
+  margin: 0 auto; /* Auto-margin para centralizar horizontalmente */
+  border-radius: 20px;
+}
+
+.navbar-custom {
+  background-color: #000000;
+  color: #ffffff;
+  border-bottom: 0.5px solid #202020;
+}
+
+.autostar-logo {
+  max-height: 200px; /* Ajuste a altura conforme necessário */
+  max-width: 15%;
+}
+
+a {
+  color: #000000; /* Cor preta */
+  text-decoration: none; /* Remove o sublinhado dos links */
+}
+
+a:hover {
+  color: #0000ff; /* Cor azul ao passar o mouse */
+  text-decoration: underline; /* Adiciona o sublinhado ao passar o mouse */
+}
+
+
+.card{
+  background-color: #f1f1f1;
+  border-radius: 20px;
+}
