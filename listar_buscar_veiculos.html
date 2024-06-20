@@ -11,7 +11,7 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="styles.css">
 
-  <title>AutoStar Menu</title>
+  <title>AutoStar | Lista de Veículos</title>
 </head>
 <body>
   <div>
@@ -24,17 +24,52 @@
       </nav>
     </header>
   </div>
+
   <main class="padrao">
     <div class="container">
-      <div class="container "> 
-        <h2>Menu Inicial</h2>
-        <h5 class="text-muted">Escolha uma opção:</h5>
-        <button type="button" class="btn-menu btn-warning btn-lg btn-block" onclick="window.location.href='cadastrar_veiculos.html'">Cadastrar Veículos</button>
-        <button type="button" class="btn-menu btn-warning btn-lg btn-block" onclick="window.location.href='listar_buscar_veiculos.html'">Listar/Buscar Veículos</button>
-        <button type="button" class="btn-menu btn-warning btn-lg btn-block" onclick="window.location.href='excluir_veiculos.html'">Excluir Veículos</button>
+
+      <div class="container p-4">
+        <h1 class="titulo pb-2 m-0">Veículos à venda</h1>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <label for="marcaFiltro">Marca:</label>
+            <input type="text" class="form-control" id="marcaFiltro">
+          </div>
+          <div class="col-md-3">
+            <label for="modeloFiltro">Modelo:</label>
+            <input type="text" class="form-control" id="modeloFiltro">
+          </div>
+          <div class="col-md-2">
+            <label for="anoFiltro">Ano de Fabricação:</label>
+            <input type="text" class="form-control" id="anoFiltro">
+          </div>
+          <div class="col-md-2">
+            <label for="corFiltro">Cor:</label>
+            <input type="text" class="form-control" id="corFiltro">
+          </div>
+          <div class="col-md-2">
+            <label for="tipoFiltro">Tipo:</label>
+            <input type="text" class="form-control" id="tipoFiltro">
+          </div>
+        </div>
+        <div class="text-center mt-3">
+          <button type="button" class="btn btn-warning" onclick="filtrarVeiculos()">Filtrar</button>
+        </div>
+      </div>
+
+      <div class="card-deck mt-4" id="veiculosLista">
+        <!-- Os veículos serão listados aqui -->
+      </div>
+
+      <div class="text-center">
+        <button type="button" class="btn btn-warning mt-2" onclick="window.location.href='menus.html'">Voltar para o Menu Inicial</button>
       </div>
     </div>
   </main>
+  
   <footer class="py-3">
     <p class="text-center">Copyright © | 2024 UFRN</p> 
   </footer>

@@ -11,7 +11,7 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="styles.css">
 
-  <title>AutoStar Menu</title>
+  <title>AutoStar | Excluir Veículo</title>
 </head>
 <body>
   <div>
@@ -24,17 +24,24 @@
       </nav>
     </header>
   </div>
+
   <main class="padrao">
     <div class="container">
-      <div class="container "> 
-        <h2>Menu Inicial</h2>
-        <h5 class="text-muted">Escolha uma opção:</h5>
-        <button type="button" class="btn-menu btn-warning btn-lg btn-block" onclick="window.location.href='cadastrar_veiculos.html'">Cadastrar Veículos</button>
-        <button type="button" class="btn-menu btn-warning btn-lg btn-block" onclick="window.location.href='listar_buscar_veiculos.html'">Listar/Buscar Veículos</button>
-        <button type="button" class="btn-menu btn-warning btn-lg btn-block" onclick="window.location.href='excluir_veiculos.html'">Excluir Veículos</button>
+      <h1 class="titulo pb-2 m-0">Excluir Veículo</h1>
+      <form id="excluirForm">
+        <div class="list-group" id="veiculosLista">
+          <!-- Lista de veículos será carregada aqui -->
+        </div>
+        <div class="text-center mt-3">
+          <button type="button" class="btn btn-warning" onclick="excluirVeiculos()">Excluir Veículos Selecionados</button>
+        </div>
+      </form>
+      <div class="text-center mt-3">
+        <button type="button" class="btn btn-warning" onclick="window.location.href='menus.html'">Voltar para o Menu Inicial</button>
       </div>
     </div>
   </main>
+
   <footer class="py-3">
     <p class="text-center">Copyright © | 2024 UFRN</p> 
   </footer>

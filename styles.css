@@ -63,3 +63,8 @@ a:hover {
   background-color: #f1f1f1;
   border-radius: 20px;
 }
+
+.btn-group-lg>.btn, .btn-lg {
+  padding: 50px;
+ 
+}
