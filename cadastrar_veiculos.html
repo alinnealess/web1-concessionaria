@@ -18,7 +18,14 @@
     <header>
       <nav class="navbar navbar-dark bg-black p-3 navbar-custom">
         <div class="container d-flex align-items-center">
-          <img src="resources/logoautostar.png" alt="Logo" class="autostar-logo">
+          <a href="menus.html">
+            <img
+              src="resources/logoautostar.png"
+              alt="Logo"
+              class="autostar-logo"
+            />
+          </a>
+          
           <button class="btn btn-warning ml-auto" onclick="logout()">Logout</button>
         </div>
       </nav>
@@ -72,7 +79,7 @@
                       <option>Conversível</option>
                       <option>Hatch</option>
                       <option>Pick-up</option>
-                      <option>Sedã</option>
+                      <option>Sedan</option>
                       <option>SUV</option>
                       <option>Van/Utilitário</option>                            
                     </select>
@@ -102,6 +109,7 @@
                   <div class="form-group">
                     <label for="preco">Preço (R$):</label>
                     <input type="text" class="form-control" id="preco" placeholder="Preço do veículo" required />
+                    <small id="PriceBlock" class="form-text text-muted">Ex: R$ 58.000,00</small>
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlFile1">Inserir Imagem:</label>
