@@ -32,8 +32,8 @@ footer {
 }
 
 .botao-entrar {
-  display: block; /* Torna o botão um bloco para ocupar toda a largura do contêiner */
-  margin: 0 auto; /* Auto-margin para centralizar horizontalmente */
+  display: block; 
+  margin: 0 auto; 
   border-radius: 20px;
 }
 
@@ -44,20 +44,19 @@ footer {
 }
 
 .autostar-logo {
-  max-height: 200px; /* Ajuste a altura conforme necessário */
+  max-height: 200px;
   max-width: 15%;
 }
 
 a {
-  color: #000000; /* Cor preta */
-  text-decoration: none; /* Remove o sublinhado dos links */
+  color: #000000; 
+  text-decoration: none; 
 }
 
 a:hover {
-  color: #0000ff; /* Cor azul ao passar o mouse */
-  text-decoration: underline; /* Adiciona o sublinhado ao passar o mouse */
+  color: #0000ff; 
+  text-decoration: underline; 
 }
-
 
 .card{
   background-color: #f1f1f1;
@@ -66,22 +65,24 @@ a:hover {
 
 .btn-group-lg>.btn, .btn-lg {
   padding: 50px;
- 
 }
 
 
-.card-img-top {
+.card-body .form-check {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  
+}
 
+.form-check-label {
+  margin-left: 10px;
+}
+
+.card-img-top {
   border-bottom: 0;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  
   overflow: hidden;
-    
  }
 
- .form-check {
-  position: relative;
-  display: block;
-  padding-left: 1.25rem;
-}
