@@ -41,7 +41,6 @@ function logout() {
 
 // Função para cadastrar veículos
 function cadastrarVeiculo() {
-  // Obtém os valores dos campos de entrada do formulário
   const marca = document.getElementById('marca').value;
   const modelo = document.getElementById('modelo').value;
   const anoFabricacao = document.getElementById('anoFabricacao').value;
@@ -57,7 +56,7 @@ function cadastrarVeiculo() {
     return;
   }
 
-  //Instancia um novo objeto do tipo Carro
+  // Instancia um novo objeto do tipo Carro
   const imagem = imagemInput.name;
   const carro = new Carro(marca, modelo, anoFabricacao, cor, tipo, quilometragem, numeroPortas, preco, imagem);
 
@@ -70,13 +69,11 @@ function cadastrarVeiculo() {
   window.location.href = 'listar_buscar_veiculos.html'; // Redireciona para a página de listagem de veículos
 }
 
-
 // Função para listar veículos
 document.addEventListener('DOMContentLoaded', function() {
-  // Verifica se a página atual é a de listagem de veículos
   if (window.location.pathname.includes('listar_buscar_veiculos.html')) {
     exibirTodos();
-  } else if (window.location.pathname.includes('excluir.html')) {
+  } else if (window.location.pathname.includes('excluir_veiculos.html')) {
     exibirTodosExcluir();
   }
 });
@@ -88,7 +85,6 @@ function exibirTodos() {
   veiculosLista.innerHTML = '';
 
   let row;
-  // Cria uma nova linha a cada três veículos
   veiculos.forEach((veiculo, index) => {
     if (index % 3 === 0) {
       row = document.createElement('div');
@@ -96,12 +92,11 @@ function exibirTodos() {
       veiculosLista.appendChild(row);
     }
 
-    // Cria um novo elemento para o veículo
     const veiculoItem = document.createElement('div');
     veiculoItem.className = 'col-md-4';
     veiculoItem.innerHTML = `
       <div class="card">
-        <img class="card-img-top" src="resources/${veiculo.imagem}" alt="Imagem de capa do card">
+        <img class="card-img-top vehicle-img" src="resources/${veiculo.imagem}" alt="Imagem de capa do card">
         <div class="card-body">
           <h5 class="card-title">${veiculo.marca} ${veiculo.modelo}</h5>
           <p class="card-text">Ano: ${veiculo.anoFabricacao}</p>
@@ -119,7 +114,6 @@ function exibirTodos() {
 
 // Função para filtrar veículos
 function filtrarVeiculos() {
-  // Obtém os valores dos filtros de entrada e converte para letras minúsculas
   const marcaFiltro = document.getElementById('marcaFiltro').value.toLowerCase();
   const modeloFiltro = document.getElementById('modeloFiltro').value.toLowerCase();
   const anoFiltro = document.getElementById('anoFiltro').value.toLowerCase();
@@ -161,7 +155,7 @@ function filtrarVeiculos() {
       veiculoItem.className = 'col-md-4'; 
       veiculoItem.innerHTML = `
         <div class="card">
-          <img class="card-img-top" src="resources/${veiculo.imagem}" alt="Imagem de capa do card">
+          <img class="card-img-top vehicle-img" src="resources/${veiculo.imagem}" alt="Imagem de capa do card">
           <div class="card-body">
             <h5 class="card-title">${veiculo.marca} ${veiculo.modelo}</h5>
             <p class="card-text">Ano: ${veiculo.anoFabricacao}</p>
@@ -188,7 +182,6 @@ function filtrarVeiculos() {
   }
 }
 
-
 // Função para excluir veículos na página de exlusão
 function exibirTodosExcluir() {
   var veiculos = JSON.parse(localStorage.getItem('veiculos')) || [];
@@ -207,7 +200,7 @@ function exibirTodosExcluir() {
     veiculoItem.className = 'col-md-4';
     veiculoItem.innerHTML = `
       <div class="card">
-        <img class="card-img-top" src="resources/${veiculo.imagem}" alt="Imagem de capa do card">
+        <img class="card-img-top vehicle-img" src="resources/${veiculo.imagem}" alt="Imagem de capa do card">
         <div class="card-body">
           <h5 class="card-title">${veiculo.marca} ${veiculo.modelo}</h5>
           <p class="card-text">Ano: ${veiculo.anoFabricacao}</p>
@@ -234,7 +227,6 @@ function excluirVeiculos() {
     alert('Por favor, selecione pelo menos um veículo para excluir.');
     return;
   }
-
 
   var veiculos = JSON.parse(localStorage.getItem('veiculos')) || [];
   var indicesParaExcluir = [];
