@@ -28,7 +28,6 @@ function logout() {
 
 // Função para cadastrar veículos
 function cadastrarVeiculo() {
-  // Obtém os valores dos campos de entrada do formulário
   const marca = document.getElementById('marca').value;
   const modelo = document.getElementById('modelo').value;
   const anoFabricacao = document.getElementById('anoFabricacao').value;
@@ -50,6 +49,7 @@ function cadastrarVeiculo() {
 
   // Adiciona o veículo ao localStorage
   let veiculos = JSON.parse(localStorage.getItem('veiculos')) || [];
+  console.log(veiculos);
   veiculos.push(carro);
   localStorage.setItem('veiculos', JSON.stringify(veiculos));
 
@@ -67,15 +67,6 @@ function cadastrarVeiculo() {
   document.getElementById('exampleFormControlFile1').value = '';
 }
 
-// Função para listar veículos
-document.addEventListener('DOMContentLoaded', function() {
-  if (window.location.pathname.includes('listar_buscar_veiculos.html')) {
-    exibirTodos();
-  } else if (window.location.pathname.includes('excluir_veiculos.html')) {
-    exibirTodosExcluir();
-  }
-});
-
 // Função que exibe todos os veículos armazenados no localStorage
 function exibirTodos() {
   const veiculos = JSON.parse(localStorage.getItem('veiculos')) || [];
@@ -92,7 +83,7 @@ function exibirTodos() {
     }
 
     const veiculoItem = document.createElement('div');
-    veiculoItem.className = 'card mb-3'; // Card individual com margem inferior
+    veiculoItem.className = 'card mb-3'; 
     veiculoItem.innerHTML = `
       <img class="card-img-top vehicle-img" src="resources/${veiculo.imagem}" alt="Imagem de capa do card">
       <div class="card-body">
@@ -109,14 +100,13 @@ function exibirTodos() {
   });
 }
 
-// Carregar todos os veículos ao carregar a página
+// Função para listar veículos ao carregar a página
 document.addEventListener('DOMContentLoaded', function() {
-  exibirTodos();
-});
-
-// Carregar todos os veículos ao carregar a página
-document.addEventListener('DOMContentLoaded', function() {
-  exibirTodosExcluir();
+  if (window.location.pathname.includes('listar_buscar_veiculos.html')) {
+    exibirTodos();
+  } else if (window.location.pathname.includes('excluir_veiculos.html')) {
+    exibirTodosExcluir();
+  }
 });
 
 // Função para filtrar veículos
@@ -128,6 +118,7 @@ function filtrarVeiculos() {
   const tipoFiltro = document.getElementById('tipoFiltro').value.toLowerCase();
 
   const veiculos = JSON.parse(localStorage.getItem('veiculos')) || [];
+  console.log(veiculos);
   const veiculosLista = document.getElementById('veiculosLista');
   veiculosLista.innerHTML = '';
 
@@ -144,7 +135,7 @@ function filtrarVeiculos() {
     ) {
       if (index % 3 === 0) {
         group = document.createElement('div');
-        group.className = 'card-group mb-4'; // Adiciona classes de Bootstrap para estilo
+        group.className = 'card-group mb-4'; 
         veiculosLista.appendChild(group);
       }
 
@@ -172,10 +163,10 @@ function filtrarVeiculos() {
   }
 }
 
-
 // Função para excluir veículos na página de exclusão
 function exibirTodosExcluir() {
   const veiculos = JSON.parse(localStorage.getItem('veiculos')) || [];
+  console.log(veiculos);
   const veiculosLista = document.getElementById('veiculosLista');
   veiculosLista.innerHTML = '';
 
@@ -218,33 +209,6 @@ function excluirVeiculos() {
   }
 
   let veiculos = JSON.parse(localStorage.getItem('veiculos')) || [];
-  const indicesParaExcluir = Array.from(checkboxes).map(checkbox => parseInt(checkbox.value));
-
-  indicesParaExcluir.sort((a, b) => b - a);
-  indicesParaExcluir.forEach(index => veiculos.splice(index, 1));
-
-  localStorage.setItem('veiculos', JSON.stringify(veiculos));
-  alert('Veículo(s) excluído(s) com sucesso!');
-  exibirTodosExcluir();
-}
-
-
-// Carregar todos os veículos na página de exclusão ao carregar a página
-document.addEventListener('DOMContentLoaded', function() {
-  if (window.location.pathname.includes('excluir.html')) {
-    exibirTodosExcluir();
-  }
-});
-
-// Função para excluir veículos selecionados
-function excluirVeiculos() {
-  const checkboxes = document.querySelectorAll('.form-check-input:checked');
-  if (checkboxes.length === 0) {
-    alert('Por favor, selecione pelo menos um veículo para excluir.');
-    return;
-  }
-
-  let veiculos = JSON.parse(localStorage.getItem('veiculos')) || [];
   console.log(veiculos);
   const indicesParaExcluir = Array.from(checkboxes).map(checkbox => parseInt(checkbox.value));
 
@@ -255,3 +219,12 @@ function excluirVeiculos() {
   alert('Veículo(s) excluído(s) com sucesso!');
   exibirTodosExcluir();
 }
+
+// Carregar todos os veículos na página de exclusão ao carregar a página
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.location.pathname.includes('excluir_veiculos.html')) {
+    exibirTodosExcluir();
+  } else {
+    exibirTodos();
+  }
+});
