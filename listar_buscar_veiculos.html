@@ -1,127 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <!-- Meta tags Obrigatórias -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+<head>
+  <!-- Meta tags Obrigatórias -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-      crossorigin="anonymous"
-    />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
 
-    <title>AutoStar | Lista de Veículos</title>
-  </head>
-  <body>
-    <div>
-      <header>
-        <nav class="navbar navbar-dark bg-black p-3 navbar-custom">
-          <div class="container d-flex align-items-center">
-            <a href="menus.html">
-              <img
-                src="resources/logoautostar.png"
-                alt="Logo"
-                class="autostar-logo"
-              />
-            </a>
-
-            <button class="btn btn-warning ml-auto" onclick="logout()">
-              Logout
-            </button>
-          </div>
-        </nav>
-      </header>
-    </div>
-
-
-    <main class="padrao">
-      <div class="container">
-
-        <div class="container p-4">
-          <h1 class="titulo pb-2 m-0">Veículos à venda</h1>
+  <title>AutoStar | Lista de Veículos</title>
+</head>
+<body>
+  <div>
+    <header>
+      <nav class="navbar navbar-dark bg-black p-3 navbar-custom">
+        <div class="container d-flex align-items-center">
+          <a href="menus.html">
+            <img src="resources/logoautostar.png" alt="Logo" class="autostar-logo">
+          </a>
+          <button class="btn btn-warning ml-auto" onclick="logout()">Logout</button>
         </div>
+      </nav>
+    </header>
+  </div>
 
-        <div class="container">
-          <div class="row">
-            <div class="col-md-3">
-              <label for="marcaFiltro">Marca:</label>
-              <input type="text" class="form-control" id="marcaFiltro" />
-            </div>
-            <div class="col-md-3">
-              <label for="modeloFiltro">Modelo:</label>
-              <input type="text" class="form-control" id="modeloFiltro" />
-            </div>
-            <div class="col-md-2">
-              <label for="anoFiltro">Ano de Fabricação:</label>
-              <input type="text" class="form-control" id="anoFiltro" />
-            </div>
-            <div class="col-md-2">
-              <label for="corFiltro">Cor:</label>
-              <input type="text" class="form-control" id="corFiltro" />
-            </div>
-            <div class="col-md-2">
-              <label for="tipoFiltro">Tipo:</label>
-              <input type="text" class="form-control" id="tipoFiltro" />
-            </div>
-          </div>
-          <div class="text-center mt-3">
-            <button
-              type="button"
-              class="btn btn-warning mt-2"
-              onclick="filtrarVeiculos()"
-            >
-              Filtrar
-            </button>
-            <button
-              type="button"
-              class="btn btn-warning mt-2"
-              onclick="exibirTodos()"
-            >
-              Exibir Todos
-            </button>
-            <button
-              type="button" class="btn btn-warning mt-2"
-              onclick="window.location.href='menus.html'">Voltar para o Menu Inicial
-            </button>
-          </div>
-        </div>
-
-        <div class="card-deck mt-4" id="veiculosLista">
-          <!-- Os veículos serão listados aqui -->
-        </div>
+  <main class="padrao">
+    <div class="container">
+      <div class="container p-4">
+        <h1 class="titulo pb-2 m-0">Veículos cadastrados</h1>
       </div>
-    </main>
 
-    <footer class="py-3">
-      <p class="text-center">Copyright © | 2024 UFRN</p>
-    </footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <label for="marcaFiltro">Marca:</label>
+            <input type="text" class="form-control" id="marcaFiltro" />
+          </div>
+          <div class="col-md-3">
+            <label for="modeloFiltro">Modelo:</label>
+            <input type="text" class="form-control" id="modeloFiltro" />
+          </div>
+          <div class="col-md-2">
+            <label for="anoFiltro">Ano de Fabricação:</label>
+            <input type="text" class="form-control" id="anoFiltro" />
+          </div>
+          <div class="col-md-2">
+            <label for="corFiltro">Cor:</label>
+            <input type="text" class="form-control" id="corFiltro" />
+          </div>
+          <div class="col-md-2">
+            <label for="tipoFiltro">Tipo:</label>
+            <input type="text" class="form-control" id="tipoFiltro" />
+          </div>
+        </div>
+        <div class="text-center mt-3">
+          
+          <button type="button" class="btn btn-warning mt-2" onclick="filtrarVeiculos()">Filtrar</button>
+       
+        </div>
+        
+      </div>
+      <br>
+      <div id="veiculosLista">
+        <!-- Os veículos serão listados aqui -->
+      </div>
 
-    <!-- JavaScript (Opcional) -->
-    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.amazonaws.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"
-    ></script>
-    <script src="script.js"></script>
-  </body>
+      <div class="text-center mt-3">
+        <button type="button" class="btn btn-warning mt-2" onclick="exibirTodos()">Ver Todos os Veículos</button>
+      
+        <button type="button" class="btn btn-warning mt-2" onclick="window.location.href='menus.html'">Voltar para o Menu Inicial</button>
+      </div>
+      <br>
+    </div>
+  </main>
+
+  <footer class="py-3">
+    <p class="text-center">Copyright © | 2024 UFRN</p>
+  </footer>
+
+  <!-- JavaScript (Opcional) -->
+  <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrap.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
 </html>

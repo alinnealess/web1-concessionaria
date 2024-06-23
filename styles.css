@@ -24,7 +24,6 @@
   flex-shrink: 0;
 }
 
-
 footer {
   background-color: #202020;
   color: #ffffff;
@@ -58,31 +57,60 @@ a:hover {
   text-decoration: underline; 
 }
 
-.card{
-  background-color: #f1f1f1;
-  border-radius: 20px;
-}
-
 .btn-group-lg>.btn, .btn-lg {
   padding: 50px;
 }
 
+.card {
+  background-color: #f1f1f1;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  margin-bottom: 20px; 
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1; 
+}
 
 .card-body .form-check {
   display: flex;
   align-items: center;
   margin-top: 10px;
-  
+}
+
+.card-img-top {
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover; 
+  border-bottom: 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow: hidden;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+}
+
+.col-md-4 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px; 
 }
 
 .form-check-label {
   margin-left: 10px;
 }
 
-.card-img-top {
-  border-bottom: 0;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  overflow: hidden;
- }
-
+.vehicle-img {
+  width: 100%;
+  height: 200px; 
+  object-fit: cover; /
+}
