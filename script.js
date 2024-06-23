@@ -20,19 +20,6 @@ class Carro extends Veiculo {
   }
 }
 
-// Função de login
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-  event.preventDefault();
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
-
-  if (username === 'admin' && password === 'admin') {
-    window.location.href = 'menus.html';
-  } else {
-    alert('Nome de usuário ou senha incorretos!');
-  }
-});
-
 // Função de logout
 function logout() {
   alert('Você foi deslogado com sucesso!');
@@ -41,6 +28,7 @@ function logout() {
 
 // Função para cadastrar veículos
 function cadastrarVeiculo() {
+  // Obtém os valores dos campos de entrada do formulário
   const marca = document.getElementById('marca').value;
   const modelo = document.getElementById('modelo').value;
   const anoFabricacao = document.getElementById('anoFabricacao').value;
@@ -66,7 +54,17 @@ function cadastrarVeiculo() {
   localStorage.setItem('veiculos', JSON.stringify(veiculos));
 
   alert('Veículo cadastrado com sucesso!'); // Exibe um alerta de sucesso
-  window.location.href = 'listar_buscar_veiculos.html'; // Redireciona para a página de listagem de veículos
+  
+  // Limpa os campos do formulário
+  document.getElementById('marca').value = '';
+  document.getElementById('modelo').value = '';
+  document.getElementById('anoFabricacao').value = '';
+  document.getElementById('inputCor').value = '';
+  document.getElementById('inputTipo').value = '';
+  document.getElementById('km').value = '';
+  document.querySelector('input[name="numeroPortas"]:checked').checked = false;
+  document.getElementById('preco').value = '';
+  document.getElementById('exampleFormControlFile1').value = '';
 }
 
 // Função para listar veículos
@@ -81,36 +79,45 @@ document.addEventListener('DOMContentLoaded', function() {
 // Função que exibe todos os veículos armazenados no localStorage
 function exibirTodos() {
   const veiculos = JSON.parse(localStorage.getItem('veiculos')) || [];
+  console.log(veiculos);
   const veiculosLista = document.getElementById('veiculosLista');
   veiculosLista.innerHTML = '';
 
-  let row;
+  let group;
   veiculos.forEach((veiculo, index) => {
     if (index % 3 === 0) {
-      row = document.createElement('div');
-      row.className = 'row mb-4';
-      veiculosLista.appendChild(row);
+      group = document.createElement('div');
+      group.className = 'card-group mb-4';
+      veiculosLista.appendChild(group);
     }
 
     const veiculoItem = document.createElement('div');
-    veiculoItem.className = 'col-md-4';
+    veiculoItem.className = 'card mb-3'; // Card individual com margem inferior
     veiculoItem.innerHTML = `
-      <div class="card">
-        <img class="card-img-top vehicle-img" src="resources/${veiculo.imagem}" alt="Imagem de capa do card">
-        <div class="card-body">
-          <h5 class="card-title">${veiculo.marca} ${veiculo.modelo}</h5>
-          <p class="card-text">Ano: ${veiculo.anoFabricacao}</p>
-          <p class="card-text">Cor: ${veiculo.cor}</p>
-          <p class="card-text">Tipo: ${veiculo.tipo}</p>
-          <p class="card-text">Quilometragem: ${veiculo.quilometragem} km</p>
-          <p class="card-text">Número de Portas: ${veiculo.numeroPortas}</p>
-          <p class="card-text">Preço: R$ ${veiculo.preco}</p>
-        </div>
+      <img class="card-img-top vehicle-img" src="resources/${veiculo.imagem}" alt="Imagem de capa do card">
+      <div class="card-body">
+        <h5 class="card-title">${veiculo.marca} ${veiculo.modelo}</h5>
+        <p class="card-text">Ano: ${veiculo.anoFabricacao}</p>
+        <p class="card-text">Cor: ${veiculo.cor}</p>
+        <p class="card-text">Tipo: ${veiculo.tipo}</p>
+        <p class="card-text">Quilometragem: ${veiculo.quilometragem} km</p>
+        <p class="card-text">Número de Portas: ${veiculo.numeroPortas}</p>
+        <p class="card-text">Preço: R$ ${veiculo.preco}</p>
       </div>
     `;
-    row.appendChild(veiculoItem);
+    group.appendChild(veiculoItem);
   });
 }
+
+// Carregar todos os veículos ao carregar a página
+document.addEventListener('DOMContentLoaded', function() {
+  exibirTodos();
+});
+
+// Carregar todos os veículos ao carregar a página
+document.addEventListener('DOMContentLoaded', function() {
+  exibirTodosExcluir();
+});
 
 // Função para filtrar veículos
 function filtrarVeiculos() {
@@ -120,22 +127,14 @@ function filtrarVeiculos() {
   const corFiltro = document.getElementById('corFiltro').value.toLowerCase();
   const tipoFiltro = document.getElementById('tipoFiltro').value.toLowerCase();
 
-  // Recupera a lista de veículos do localStorage, ou usa uma lista vazia se não houver veículos salvos
   const veiculos = JSON.parse(localStorage.getItem('veiculos')) || [];
-  
-  // Seleciona o elemento HTML onde os veículos filtrados serão exibidos
   const veiculosLista = document.getElementById('veiculosLista');
-  
-  // Limpa qualquer conteúdo anterior
   veiculosLista.innerHTML = '';
 
-  // Variável para agrupar os veículos em linhas de três itens
-  let row;
+  let group;
   let encontrouVeiculo = false;
 
-  // Itera sobre cada veículo na lista
   veiculos.forEach((veiculo, index) => {
-    // Verifica se o veículo corresponde a todos os filtros aplicados
     if (
       (marcaFiltro === '' || veiculo.marca.toLowerCase().includes(marcaFiltro)) &&
       (modeloFiltro === '' || veiculo.modelo.toLowerCase().includes(modeloFiltro)) &&
@@ -143,63 +142,15 @@ function filtrarVeiculos() {
       (corFiltro === '' || veiculo.cor.toLowerCase().includes(corFiltro)) &&
       (tipoFiltro === '' || veiculo.tipo.toLowerCase().includes(tipoFiltro))
     ) {
-      // Cria uma nova linha a cada três veículos
       if (index % 3 === 0) {
-        row = document.createElement('div');
-        row.className = 'row mb-4'; // Adiciona classes de Bootstrap para estilo
-        veiculosLista.appendChild(row); // Adiciona a linha ao container principal
+        group = document.createElement('div');
+        group.className = 'card-group mb-4'; // Adiciona classes de Bootstrap para estilo
+        veiculosLista.appendChild(group);
       }
 
-      // Cria um novo elemento para o veículo
       const veiculoItem = document.createElement('div');
-      veiculoItem.className = 'col-md-4'; 
+      veiculoItem.className = 'card mb-3';
       veiculoItem.innerHTML = `
-        <div class="card">
-          <img class="card-img-top vehicle-img" src="resources/${veiculo.imagem}" alt="Imagem de capa do card">
-          <div class="card-body">
-            <h5 class="card-title">${veiculo.marca} ${veiculo.modelo}</h5>
-            <p class="card-text">Ano: ${veiculo.anoFabricacao}</p>
-            <p class="card-text">Cor: ${veiculo.cor}</p>
-            <p class="card-text">Tipo: ${veiculo.tipo}</p>
-            <p class="card-text">Quilometragem: ${veiculo.quilometragem} km</p>
-            <p class="card-text">Número de Portas: ${veiculo.numeroPortas}</p>
-            <p class="card-text">Preço: R$ ${veiculo.preco}</p>
-          </div>
-        </div>
-      `;
-      
-      // Adiciona o item do veículo à linha atual
-      row.appendChild(veiculoItem);
-      
-      // Define a flag para indicar que pelo menos um veículo foi encontrado
-      encontrouVeiculo = true;
-    }
-  });
-
-  // Exibe um alerta se nenhum veículo correspondente ao filtro foi encontrado
-  if (!encontrouVeiculo) {
-    alert('Não há veículos correspondentes ao filtro.');
-  }
-}
-
-// Função para excluir veículos na página de exlusão
-function exibirTodosExcluir() {
-  var veiculos = JSON.parse(localStorage.getItem('veiculos')) || [];
-  var veiculosLista = document.getElementById('veiculosLista');
-  veiculosLista.innerHTML = '';
-
-  var row;
-  veiculos.forEach(function(veiculo, index) {
-    if (index % 3 === 0) {
-      row = document.createElement('div');
-      row.className = 'row mb-4';
-      veiculosLista.appendChild(row);
-    }
-
-    var veiculoItem = document.createElement('div');
-    veiculoItem.className = 'col-md-4';
-    veiculoItem.innerHTML = `
-      <div class="card">
         <img class="card-img-top vehicle-img" src="resources/${veiculo.imagem}" alt="Imagem de capa do card">
         <div class="card-body">
           <h5 class="card-title">${veiculo.marca} ${veiculo.modelo}</h5>
@@ -209,39 +160,98 @@ function exibirTodosExcluir() {
           <p class="card-text">Quilometragem: ${veiculo.quilometragem} km</p>
           <p class="card-text">Número de Portas: ${veiculo.numeroPortas}</p>
           <p class="card-text">Preço: R$ ${veiculo.preco}</p>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="${index}" id="veiculo${index}">
-            <label class="form-check-label" for="veiculo${index}">Excluir este item</label>
-          </div>
+        </div>
+      `;
+      group.appendChild(veiculoItem);
+      encontrouVeiculo = true;
+    }
+  });
+
+  if (!encontrouVeiculo) {
+    alert('Não há veículos correspondentes ao filtro.');
+  }
+}
+
+
+// Função para excluir veículos na página de exclusão
+function exibirTodosExcluir() {
+  const veiculos = JSON.parse(localStorage.getItem('veiculos')) || [];
+  const veiculosLista = document.getElementById('veiculosLista');
+  veiculosLista.innerHTML = '';
+
+  let group;
+  veiculos.forEach((veiculo, index) => {
+    if (index % 3 === 0) {
+      group = document.createElement('div');
+      group.className = 'card-group mb-4';
+      veiculosLista.appendChild(group);
+    }
+
+    const veiculoItem = document.createElement('div');
+    veiculoItem.className = 'card mb-3';
+    veiculoItem.innerHTML = `
+      <img class="card-img-top vehicle-img" src="resources/${veiculo.imagem}" alt="Imagem de capa do card">
+      <div class="card-body">
+        <h5 class="card-title">${veiculo.marca} ${veiculo.modelo}</h5>
+        <p class="card-text">Ano: ${veiculo.anoFabricacao}</p>
+        <p class="card-text">Cor: ${veiculo.cor}</p>
+        <p class="card-text">Tipo: ${veiculo.tipo}</p>
+        <p class="card-text">Quilometragem: ${veiculo.quilometragem} km</p>
+        <p class="card-text">Número de Portas: ${veiculo.numeroPortas}</p>
+        <p class="card-text">Preço: R$ ${veiculo.preco}</p>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="${index}" id="veiculo${index}">
+          <label class="form-check-label" for="veiculo${index}">Excluir este item</label>
         </div>
       </div>
     `;
-    row.appendChild(veiculoItem);
+    group.appendChild(veiculoItem);
   });
 }
 
 // Função para excluir veículos selecionados
 function excluirVeiculos() {
-  var checkboxes = document.querySelectorAll('.form-check-input:checked');
+  const checkboxes = document.querySelectorAll('.form-check-input:checked');
   if (checkboxes.length === 0) {
     alert('Por favor, selecione pelo menos um veículo para excluir.');
     return;
   }
 
-  var veiculos = JSON.parse(localStorage.getItem('veiculos')) || [];
-  var indicesParaExcluir = [];
-  for (var i = 0; i < checkboxes.length; i++) {
-    indicesParaExcluir.push(parseInt(checkboxes[i].value));
-  }
+  let veiculos = JSON.parse(localStorage.getItem('veiculos')) || [];
+  const indicesParaExcluir = Array.from(checkboxes).map(checkbox => parseInt(checkbox.value));
 
-  indicesParaExcluir.sort(function(a, b) {
-    return b - a;
-  });
-  for (var j = 0; j < indicesParaExcluir.length; j++) {
-    veiculos.splice(indicesParaExcluir[j], 1); 
-  }
+  indicesParaExcluir.sort((a, b) => b - a);
+  indicesParaExcluir.forEach(index => veiculos.splice(index, 1));
 
   localStorage.setItem('veiculos', JSON.stringify(veiculos));
-  alert('Veículo(s) excluído(s) com sucesso!'); 
-  exibirTodosExcluir(); 
+  alert('Veículo(s) excluído(s) com sucesso!');
+  exibirTodosExcluir();
+}
+
+
+// Carregar todos os veículos na página de exclusão ao carregar a página
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.location.pathname.includes('excluir.html')) {
+    exibirTodosExcluir();
+  }
+});
+
+// Função para excluir veículos selecionados
+function excluirVeiculos() {
+  const checkboxes = document.querySelectorAll('.form-check-input:checked');
+  if (checkboxes.length === 0) {
+    alert('Por favor, selecione pelo menos um veículo para excluir.');
+    return;
+  }
+
+  let veiculos = JSON.parse(localStorage.getItem('veiculos')) || [];
+  console.log(veiculos);
+  const indicesParaExcluir = Array.from(checkboxes).map(checkbox => parseInt(checkbox.value));
+
+  indicesParaExcluir.sort((a, b) => b - a);
+  indicesParaExcluir.forEach(index => veiculos.splice(index, 1));
+
+  localStorage.setItem('veiculos', JSON.stringify(veiculos));
+  alert('Veículo(s) excluído(s) com sucesso!');
+  exibirTodosExcluir();
 }

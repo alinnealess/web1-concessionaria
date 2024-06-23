@@ -2,14 +2,14 @@
 <html lang="pt-br">
 <head>
   <!-- Meta tags Obrigatórias -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 
   <title>AutoStar | Excluir Veículos</title>
 </head>
@@ -19,13 +19,15 @@
       <nav class="navbar navbar-dark bg-black p-3 navbar-custom">
         <div class="container d-flex align-items-center">
           <a href="menus.html">
-            <img src="resources/logoautostar.png" alt="Logo" class="autostar-logo">
+            <img src="resources/logoautostar.png" alt="Logo" class="autostar-logo" />
           </a>
           <button class="btn btn-warning ml-auto" onclick="logout()">Logout</button>
         </div>
       </nav>
     </header>
   </div>
+
+ 
 
   <main class="padrao">
     <div class="container">
@@ -34,13 +36,18 @@
       </div>
 
       <div class="container">
-        <div class="card-deck mt-4" id="veiculosLista">
+        <div class="row" id="veiculosLista">
           <!-- Os veículos serão listados aqui -->
         </div>
         <div class="text-center mt-3">
-          <button type="button" class="btn btn-warning mt-2" onclick="excluirVeiculos()">Excluir Seleção</button>
+          <button type="button" class="btn btn-warning mt-2" onclick="exibirTodosExcluir()">Ver Todos os Veículos</button>
+          <button type="button" class="btn btn-warning mt-2" onclick="excluirVeiculos()">Excluir Itens Selecionados</button>
+          
+        </div>
+        <div class="text-center mt-3">
           <button type="button" class="btn btn-warning mt-2" onclick="window.location.href='menus.html'">Voltar para o Menu Inicial</button>
         </div>
+        <br />
       </div>
     </div>
   </main>

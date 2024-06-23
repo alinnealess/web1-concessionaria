@@ -24,7 +24,6 @@
   flex-shrink: 0;
 }
 
-
 footer {
   background-color: #202020;
   color: #ffffff;
@@ -58,35 +57,59 @@ a:hover {
   text-decoration: underline; 
 }
 
-.card{
-  background-color: #f1f1f1;
-  border-radius: 20px;
-}
-
 .btn-group-lg>.btn, .btn-lg {
   padding: 50px;
 }
 
+.card {
+  background-color: #f1f1f1;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  margin-bottom: 20px; /* Espaçamento vertical entre os cartões */
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Permite que o card-body cresça para ocupar o espaço disponível */
+}
 
 .card-body .form-check {
   display: flex;
   align-items: center;
   margin-top: 10px;
-  
+}
+
+.card-img-top {
+  width: 100%; /* A largura será 100% do contêiner pai */
+  height: 200px; /* Altura fixa para todas as imagens */
+  object-fit: cover; /* A imagem será redimensionada para cobrir o contêiner, preservando a proporção */
+  border-bottom: 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow: hidden;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Espaçamento horizontal */
+}
+
+.col-md-4 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px; /* Espaçamento vertical entre cartões */
 }
 
 .form-check-label {
   margin-left: 10px;
 }
 
-.card-img-top {
-  border-bottom: 0;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  overflow: hidden;
- }
-
- .vehicle-img {
+.vehicle-img {
   width: 100%;
   height: 200px; /* Ajuste a altura conforme necessário */
   object-fit: cover; /* Esta propriedade define como o conteúdo da imagem deve se ajustar às dimensões definidas */
