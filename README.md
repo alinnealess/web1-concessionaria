@@ -79,7 +79,3 @@ O projeto consiste em 5 páginas principais:
 ## Sobre o Desenvolvedor
 
 Este projeto foi desenvolvido como parte das atividades acadêmicas do curso de Bacharelado em Tecnologia da Informação da UFRN. Ele serve como um exercício prático para aplicar os conhecimentos adquiridos na disciplina de Desenvolvimento de Sistemas Web I.
-
----
-
-Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato!
