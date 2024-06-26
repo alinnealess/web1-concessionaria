@@ -58,7 +58,11 @@ O projeto consiste em 5 páginas principais:
 ## Como Executar o Projeto
 
 1. Clone o repositório ou faça o download do código fonte.
-2. Abra o arquivo `index.html` no seu navegador web preferido.
+2. Abra o arquivo `index.html` no seu navegador web preferido e use as credenciais:
+
+         login: admin
+         senha: admin
+
 3. Navegue pelas páginas utilizando o menu disponível após a autenticação.
 
 ## Estrutura de Diretórios

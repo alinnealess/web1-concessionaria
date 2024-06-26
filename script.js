@@ -20,6 +20,22 @@ class Carro extends Veiculo {
   }
 }
 
+
+// Função de login
+function login(event) {
+  event.preventDefault();
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  if (username === 'admin' && password === 'admin') {
+    window.location.href = 'menus.html';
+  } else {
+    alert('Nome de usuário ou senha incorretos!');
+  }
+  return false; 
+}
+
+
 // Função de logout
 function logout() {
   alert('Você foi deslogado com sucesso!');
